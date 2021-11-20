@@ -16,8 +16,8 @@ __dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 __file="${__dir}/$(basename "${BASH_SOURCE[0]}")"
 __base="$(basename "${__file}" .sh)"
 
-if test -f "$HOME/.vimrc"; then
-    mv "$HOME/.vimrc" "$HOME/.vimrc.old"
+if [ -d "$HOME/.oh-my-zsh/custom" ]; then
+    mv "$HOME/.oh-my-zsh/custom" "$HOME/.oh-my-zsh/custom_old"
 fi
 
-ln -s $__dir/.vimrc "$HOME/.vimrc"
+ln -s $__dir/custom "$HOME/.oh-my-zsh/custom"
