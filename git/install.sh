@@ -22,3 +22,6 @@ fi
 git config --global commit.verbose true
 git config --global log.abbrevCommit true
 git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+git config --global commit.gpgsign true
+git config --global gpg.format ssh
+git config --global user.signingkey "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINMkk9wvWQTXCNn5J5kHhEHbfecmGC8oGVCKJXMt7Ec/ steven@MacBook-Pro"
