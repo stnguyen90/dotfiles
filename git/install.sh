@@ -26,6 +26,11 @@ git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Crese
 GPG_KEY_ID=22EB8611C67E9E5C
 SSH_PUBLIC_KEY="ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINMkk9wvWQTXCNn5J5kHhEHbfecmGC8oGVCKJXMt7Ec/ steven@MacBook-Pro"
 
+if [ -n "$GPG_KEY" ]; then
+  gpg --verbose --batch --import <(echo $GPG_KEY|base64 -d)
+  echo 'pinentry-mode loopback' >> ~/.gnupg/gpg.conf
+fi
+
 if gpg --list-secret-keys --keyid-format LONG | grep -q $GPG_KEY_ID; then
   git config --global commit.gpgsign true
   git config --global --unset gpg.format
