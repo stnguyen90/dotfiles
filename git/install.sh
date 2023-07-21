@@ -21,8 +21,14 @@ else
 fi
 git config --global commit.verbose true
 git config --global log.abbrevCommit true
-git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
+# Aliases
+git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+git config --global alias.s status
+git config --global alias.amend commit --amend --no-edit
+git config --global alias.undo reset --soft HEAD~1
+
+# Signing
 GPG_KEY_ID=22EB8611C67E9E5C
 SSH_PUBLIC_KEY="ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINMkk9wvWQTXCNn5J5kHhEHbfecmGC8oGVCKJXMt7Ec/ steven@MacBook-Pro"
 
