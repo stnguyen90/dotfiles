@@ -22,6 +22,16 @@ fi
 git config --global commit.verbose true
 git config --global log.abbrevCommit true
 git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-git config --global commit.gpgsign true
-git config --global gpg.format ssh
-git config --global user.signingkey "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINMkk9wvWQTXCNn5J5kHhEHbfecmGC8oGVCKJXMt7Ec/ steven@MacBook-Pro"
+
+GPG_KEY_ID=22EB8611C67E9E5C
+SSH_PUBLIC_KEY="ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINMkk9wvWQTXCNn5J5kHhEHbfecmGC8oGVCKJXMt7Ec/ steven@MacBook-Pro"
+
+if gpg --list-secret-keys --keyid-format LONG | grep -q $GPG_KEY_ID; then
+  git config --global commit.gpgsign true
+  git config --global --unset gpg.format
+  git config --global user.signingkey $GPG_KEY_ID
+elif ssh-add -L | grep -q $SSH_PUBLIC_KEY; then
+  git config --global commit.gpgsign true
+  git config --global gpg.format ssh
+  git config --global user.signingkey $SSH_PUBLIC_KEY
+fi
