@@ -14,7 +14,9 @@ set -o pipefail
 git config --global user.email stnguyen90@users.noreply.github.com
 git config --global user.name "Steven Nguyen"
 git config --global init.defaultBranch main
-if which code > /dev/null; then
+if which code-insiders > /dev/null; then
+  git config --global core.editor "code-insiders --wait"
+elif which code > /dev/null; then
   git config --global core.editor "code --wait"
 else
   git config --global core.editor "vim"
