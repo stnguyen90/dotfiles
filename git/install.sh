@@ -11,6 +11,10 @@ set -o pipefail
 # Turn on traces, useful while debugging but commented out by default
 # set -o xtrace
 
+# Set magic variable for current directory
+__dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+echo ${__dir}
+
 git config --global user.email stnguyen90@users.noreply.github.com
 git config --global user.name "Steven Nguyen"
 git config --global init.defaultBranch main
@@ -48,3 +52,6 @@ elif ssh-add -L | grep -q $SSH_PUBLIC_KEY; then
   git config --global gpg.format ssh
   git config --global user.signingkey $SSH_PUBLIC_KEY
 fi
+
+# Hooks
+git config --global core.hooksPath ${__dir}/dotfiles/git/hooks
