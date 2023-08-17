@@ -15,8 +15,10 @@ set -o pipefail
 __dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 echo ${__dir}
 
-git config --global user.email stnguyen90@users.noreply.github.com
-git config --global user.name "Steven Nguyen"
+if [ -z "$CODESPACES" ]; then
+  git config --global user.email stnguyen90@users.noreply.github.com
+  git config --global user.name "Steven Nguyen"
+fi
 git config --global init.defaultBranch main
 if which code-insiders > /dev/null; then
   git config --global core.editor "code-insiders --wait"
