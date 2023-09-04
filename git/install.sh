@@ -15,7 +15,7 @@ set -o pipefail
 __dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 echo ${__dir}
 
-if [ -z "$CODESPACES" ]; then
+if [ -z "${CODESPACES:-}" ]; then
   git config --global user.email stnguyen90@users.noreply.github.com
   git config --global user.name "Steven Nguyen"
 fi
@@ -40,7 +40,7 @@ git config --global alias.undo "reset --soft HEAD~1"
 GPG_KEY_ID=22EB8611C67E9E5C
 SSH_PUBLIC_KEY="ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINMkk9wvWQTXCNn5J5kHhEHbfecmGC8oGVCKJXMt7Ec/ steven@MacBook-Pro"
 
-if [ -n "$GPG_KEY" ]; then
+if [ -n "${GPG_KEY:-}" ]; then
   gpg --verbose --batch --import <(echo $GPG_KEY|base64 -d)
   echo 'pinentry-mode loopback' >> ~/.gnupg/gpg.conf
 fi
