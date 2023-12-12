@@ -33,7 +33,7 @@ git config --global log.abbrevCommit true
 # Aliases
 git config --global alias.lg "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 git config --global alias.s status
-git config --global alias.amend commit --amend --no-edit
+git config --global alias.amend "commit --amend --no-edit"
 git config --global alias.undo "reset --soft HEAD~1"
 git config --global alias.unstage "restore --staged"
 git config --global alias.pu "push -u origin HEAD"
