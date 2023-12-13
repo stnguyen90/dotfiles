@@ -49,7 +49,7 @@ fi
 
 if gpg --list-secret-keys --keyid-format LONG | grep -q $GPG_KEY_ID; then
   git config --global commit.gpgsign true
-  git config --global --unset gpg.format
+  git config --global --unset gpg.format || true
   git config --global user.signingkey $GPG_KEY_ID
 elif ssh-add -L | grep -q $SSH_PUBLIC_KEY; then
   git config --global commit.gpgsign true
