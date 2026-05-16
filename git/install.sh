@@ -20,7 +20,9 @@ if [ -z "${CODESPACES:-}" ]; then
   git config --global user.name "Steven Nguyen"
 fi
 git config --global init.defaultBranch main
-if which code-insiders > /dev/null; then
+if which zed > /dev/null; then
+    git config --global core.editor "zed --wait"
+elif which code-insiders > /dev/null; then
   git config --global core.editor "code-insiders --wait"
 elif which code > /dev/null; then
   git config --global core.editor "code --wait"
