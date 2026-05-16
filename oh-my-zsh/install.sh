@@ -16,8 +16,5 @@ __dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 __file="${__dir}/$(basename "${BASH_SOURCE[0]}")"
 __base="$(basename "${__file}" .sh)"
 
-if [ -d "$HOME/.oh-my-zsh/custom" ]; then
-    mv "$HOME/.oh-my-zsh/custom" "$HOME/.oh-my-zsh/custom_old"
-fi
-
-ln -s $__dir/custom "$HOME/.oh-my-zsh/custom"
+cp $__dir/.zshrc $HOME/.zshrc
+cp $__dir/.zprofile $HOME/.zprofile
